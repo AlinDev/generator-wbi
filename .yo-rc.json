@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Alin Bogdan",
+      "authorEmail": "whiteboxideas@gmail.com",
+      "authorUrl": "whiteboxideas.com"
+    }
+  }
+}
