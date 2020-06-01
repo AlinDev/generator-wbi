@@ -5,12 +5,17 @@ const yosay = require('yosay');
 const mkdirp = require('mkdirp');
 
 module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
+    this.argument("path", { type: String, required: false});
+  }
+
   prompting() {
     const prompts = [
       {
         type: 'input',
-        name: 'value',
-        message: 'What is your the name of your redux?',
+        name: 'name',
+        message: 'What is your the name of your redux pair?',
         default: 'redux'
       },
     ];
@@ -21,12 +26,24 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    mkdirp.sync(`${this.options.path}/`);
+    const path=this.options.path?`${this.options.path}/`
+      :'';
+    const NAME = this.props.name.toUpperCase()
 
     this.fs.copyTpl(
-      this.templatePath(),
-      this.destinationPath(`${this.options.path}/`),
-      {props:this.props},
+      this.templatePath('_actions/reduxName.actions.js'),
+      this.destinationPath(`${path}_actions/${this.props.name}.actions.js`),
+      {name:this.props.name,NAME:NAME},
+    );
+    this.fs.copyTpl(
+      this.templatePath('_models/reduxName.model.js'),
+      this.destinationPath(`${path}_models/${this.props.name}.model.js`),
+      {name:this.props.name,NAME},
+    );
+    this.fs.copyTpl(
+      this.templatePath('_reducers/reduxName.reducer.js'),
+      this.destinationPath(`${path}_reducers/${this.props.name}.reducer.js`),
+      {name:this.props.name,NAME},
     );
   }
 

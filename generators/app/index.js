@@ -43,9 +43,9 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.composeWith(require.resolve('../pages'),{ path: this.options.chapterName+'/pages'  });
-    if(this.props.redux)this.composeWith(require.resolve('../redux'),{ path: this.options.chapterName  } );
-    if(this.props.rxjs)this.composeWith(require.resolve('../rxjs'),{ path: this.options.chapterName  });
+    // this.composeWith(require.resolve('../page'),{ path: this.options.chapterName+'/page'  });
+    // if(this.props.redux)this.composeWith(require.resolve('../redux'),{ path: this.options.chapterName  } );
+    // if(this.props.rxjs)this.composeWith(require.resolve('../rxjs'),{ path: this.options.chapterName  });
 
     mkdirp.sync(`${this.options.chapterName}/`);
     this.fs.copyTpl(

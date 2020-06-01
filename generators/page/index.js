@@ -12,7 +12,7 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'page',
         message: 'What is your the name of your page?',
-        default: 'PG'
+        default: 'Landing'
       },
     ];
 
@@ -22,12 +22,16 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    mkdirp.sync(`${this.options.path}/`);
-    this.fs.copyTpl(
-      this.templatePath(),
-      this.destinationPath(`${this.options.path}/${this.props.page[i]}`),
-      {props:this.props},
-    );
-  }
+    this.log(this.options.path)
+    const path = this.options.path!==undefined?this.options.path:'';
+    if( path!=='') mkdirp.sync(`${this.options.path}/`)
+
+      // this.fs.copyTpl(
+      //   this.templatePath(),
+      //   this.destinationPath(`${path}/${this.props.page}`),
+      //   {props:this.props},
+      // )
+
+      }
 
 };

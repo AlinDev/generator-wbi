@@ -1,7 +1,7 @@
 import { ofType } from "redux-observable";
 import { catchError, flatMap } from "rxjs/operators";
 import { from } from "rxjs";
-import { ACTION, nameFailure, nameSuccess } from "../_actions/name.actions.js";
+import { ACTION, nameFailure, nameSuccess } from "../_actions/reduxName.actions.js";
 import { NAME_MUTATION }                    from "../_queries/name_mutation.gql.js";
 
 export const namePostEpic = (actions$) =>

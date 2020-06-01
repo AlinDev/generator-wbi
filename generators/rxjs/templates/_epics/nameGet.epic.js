@@ -1,5 +1,5 @@
 import { ofType } from "redux-observable";
-import { nameFailure, nameSuccess, ACTION } from "../_actions/name.actions.js";
+import { nameFailure, nameSuccess, ACTION } from "../_actions/reduxName.actions.js";
 import { catchError, flatMap } from "rxjs/operators";
 import { from }       from "rxjs";
 import { NAME_QUERY } from "../_queries/name_query.gql.js";
