@@ -1,22 +1,22 @@
 import { ofType } from "redux-observable";
-import { nameFailure, nameSuccess, ACTION } from "../_actions/reduxName.actions.js";
+import { <%= name %>Failure, <%= name %>Success, <%= NAME %>_SUBMIT } from "../_actions/<%= name %>.actions";
 import { catchError, flatMap } from "rxjs/operators";
 import { from }       from "rxjs";
-import { NAME_QUERY } from "../_queries/name_query.gql.js";
+import { <%= NAME %>_QUERY } from "../_queries/<%= name %>_query.gql";
 
-export const nameGetEpic = (actions$) =>
-  actions$.pipe(ofType(ACTION)).pipe(flatMap(nameExecutionPlan));
+export const <%= name %>GetEpic = (actions$) =>
+  actions$.pipe(ofType(<%= NAME %>_SUBMIT)).pipe(flatMap(<%= name %>ExecutionPlan));
 
-const nameExecutionPlan = (action) =>
-  from(namePromise(action.payload))
+const <%= name %>ExecutionPlan = (action) =>
+  from(<%= name %>Promise(action.payload))
     .pipe(flatMap((response) => from(successActions(response))))
     .pipe(catchError((error) => from(failActions(error))));
 
-const namePromise = () => {
+const <%= name %>Promise = () => {
   return api_v1.query({
-    query: NAME_QUERY,
+    query: <%= NAME %>_QUERY,
   });
 };
 
-const successActions = (response) => [nameSuccess(response)];
-const failActions = (error) => [nameFailure(error)];
+const successActions = (response) => [<%= name %>Success(response)];
+const failActions = (error) => [<%= name %>Failure(error)];

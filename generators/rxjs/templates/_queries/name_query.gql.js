@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
-export const NAME_QUERY = gql`
-  query AccountConfirmPhoneNumber {
-    accountConfirmPhoneNumber
+export const <%= NAME %>_QUERY = gql`
+  query <%= Name %> {
+    <%= name %>
       @rest(type: "UserInfo", path: "/Account/ConfirmPhoneNumber") {
       email
       code

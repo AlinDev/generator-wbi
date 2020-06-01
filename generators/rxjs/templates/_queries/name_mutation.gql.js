@@ -1,10 +1,10 @@
 import gql from "graphql-tag";
 
 export const NAME_MUTATION = gql`
-  mutation registerLocal($registerInput: RegisterLocalInput!) {
-    registerLocal(input: $registerInput)
+  mutation <%= Name %>($registerInput: RegisterLocalInput!) {
+    <%= name %>(input: $registerInput)
       @rest(
-        type: "RegisterLocalPayload"
+        type: "<%= Name %>Payload"
         path: "/Account/Register"
         method: "POST"
       ) {

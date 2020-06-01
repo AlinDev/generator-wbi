@@ -7,7 +7,7 @@ const mkdirp = require('mkdirp');
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
-    this.argument("chapterName", { type: String, required: true });
+    this.argument("path", { type: String, required: false });
   }
   prompting() {
 
@@ -19,7 +19,7 @@ module.exports = class extends Generator {
     const prompts = [
       {
         type: 'input',
-        name: 'chapter',
+        name: 'name',
         message: 'What is your the name of your chapter?',
         default: 'chapter'
       },
@@ -43,15 +43,19 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    // this.composeWith(require.resolve('../page'),{ path: this.options.chapterName+'/page'  });
-    // if(this.props.redux)this.composeWith(require.resolve('../redux'),{ path: this.options.chapterName  } );
-    // if(this.props.rxjs)this.composeWith(require.resolve('../rxjs'),{ path: this.options.chapterName  });
 
-    mkdirp.sync(`${this.options.chapterName}/`);
+    const name = this.props.name.toLowerCase()
+    const Name =  name.charAt(0).toUpperCase()+name.slice(1)
+
+    this.composeWith(require.resolve('../page'),{ path: this.options.path+'/pages'  });
+    if(this.props.redux)this.composeWith(require.resolve('../redux'),{ path: this.options.path  } );
+    if(this.props.rxjs)this.composeWith(require.resolve('../rxjs'),{ path: this.options.path  });
+
+    mkdirp.sync(`${this.options.path}/`);
     this.fs.copyTpl(
       this.templatePath(),
-      this.destinationPath(`${this.options.chapterName}/`),
-      {props:this.props},
+      this.destinationPath(`${this.options.path}/`),
+      { name,Name},
     );
   }
 };

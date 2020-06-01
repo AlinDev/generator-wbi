@@ -5,14 +5,18 @@ const yosay = require('yosay');
 const mkdirp = require('mkdirp');
 
 module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
+    this.argument("path", { type: String, required: false});
+  }
+
   prompting() {
-    // Have Yeoman greet the user.
     const prompts = [
       {
         type: 'input',
-        name: 'page',
+        name: 'name',
         message: 'What is your the name of your page?',
-        default: 'Landing'
+        default: 'page'
       },
     ];
 
@@ -22,16 +26,22 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.log(this.options.path)
-    const path = this.options.path!==undefined?this.options.path:'';
-    if( path!=='') mkdirp.sync(`${this.options.path}/`)
+    const path=this.options.path?`${this.options.path}/`
+      :'';
+    const NAME = this.props.name.toUpperCase()
+    const name = this.props.name.toLowerCase()
+    const Name = this.props.name.charAt(0).toUpperCase()+this.props.name.slice(1)
 
-      // this.fs.copyTpl(
-      //   this.templatePath(),
-      //   this.destinationPath(`${path}/${this.props.page}`),
-      //   {props:this.props},
-      // )
-
-      }
+    this.fs.copyTpl(
+      this.templatePath('page/Name.jsx'),
+      this.destinationPath(`${path}${this.props.name}/${Name}.jsx`),
+      {name ,NAME,Name},
+    );
+    this.fs.copyTpl(
+      this.templatePath('page/name.style.js'),
+      this.destinationPath(`${path}${this.props.name}/${this.props.name}.style.js`),
+      {name ,NAME},
+    );
+  }
 
 };

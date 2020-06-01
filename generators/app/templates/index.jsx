@@ -1,14 +1,14 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import <%= props.page %> from "./pages/"
+
 const Stack = createStackNavigator();
 
-const <%= props.chapter %>Navigation = () => {
+const <%= Name %>Navigation = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="<%= props.page %>"
-         component={<%= props.page %>}
+        name=""
+         component={}
         options={{ headerShown: false }}
         initialParams={null}
       />
@@ -17,4 +17,4 @@ const <%= props.chapter %>Navigation = () => {
   );
 };
 
-export default <%= props.hapter %>Navigation;
+export default <%= Name %>Navigation;
