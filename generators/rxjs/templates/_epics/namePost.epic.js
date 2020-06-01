@@ -19,7 +19,7 @@ const <%= name %>Promise = (payload) =>
   });
 
 const successActions = (response) => {
-  return [<%= name %>Success(error)];
+  return [<%= name %>Success(response)];
 };
 const failActions = (error) => {
   return [<%= name %>Failure(error)];

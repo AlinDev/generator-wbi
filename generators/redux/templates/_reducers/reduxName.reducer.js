@@ -8,7 +8,7 @@ import {
 export const  <%= name %>Reducer = (state = {}, action) => {
   const {type,payload }=action;
   switch ( type) {
-    case <%= NAME %>_SUBMIT:
+    case <%= NAME %>_UPDATE:
       state.loading = true;
     break;
     case <%= NAME %>_SUBMIT:
