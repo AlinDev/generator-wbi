@@ -7,7 +7,7 @@ export const formModel = yup.object().shape({
     .min(2, "First Name has to have more than 2 characters")
     .max(50)
     .required("First Name is a required field")
-    .default("Alin"),
+    .default("Test"),
   touched: yup.object().default({}),
   submitted: yup.bool().default(false),
   isLoading: yup.bool().default(false),
