@@ -13,7 +13,7 @@ module.exports = class extends Generator {
 
     // Have Yeoman greet the user.
     this.log(
-      yosay(`Welcome to the rad ${chalk.red('generator-wbi')} generator!`)
+      yosay(`Welcome to the rad ${chalk.red('wbi')} generator!`)
     );
 
     const prompts = [
@@ -24,7 +24,7 @@ module.exports = class extends Generator {
         default: 'chapter'
       },
       {
-        type: 'confirm',
+        type: '',
         name: 'redux',
         message: 'Install redux?',
         default: false
