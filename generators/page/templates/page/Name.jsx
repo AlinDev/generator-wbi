@@ -2,11 +2,11 @@ import React      from 'react'
 import {View,Text} from 'react-native'
 import styles from './<%= name %>.style'
 
-const <%= Name %> = () => {
-
+const <%= Name %> = ({route}) => {
+const { nextAddress } = route?.params;
   return (
     <View style={styles.container}>
-      <Text>Name</Text>
+      <Text>Page : Name</Text>
     </View>
   )
 }

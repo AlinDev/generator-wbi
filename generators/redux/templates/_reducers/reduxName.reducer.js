@@ -5,21 +5,36 @@ import {
  <%= NAME %>_FAIL
 } from "../_actions/<%= name %>.actions.js";
 
-export const  <%= name %>Reducer = (state = {}, action) => {
-  const {type,payload }=action;
+import { <%= Name %> } from "../_models/<%= name %>.model";
+const State = (data) => {
+  const casted = <%= Name %>.cast(data);
+  return { ...<%= Name %>.default(), ...casted };
+};
+export const  <%= name %>Reducer = (state = new State(), action) => {
+  const { type, payload } = action;
+  let newState = { ...state };
+  newState.touched = { ...state.touched };
+  newState.errors = { ...state.errors };
   switch ( type) {
     case <%= NAME %>_UPDATE:
-      state.loading = true;
+      newState[payload.inputId] = payload.text;
+      newState.touched[payload.inputId] = true;
+      newState = validate(payload.inputId, newState,  <%= Name %>);
+      newState.submitted = false;
     break;
     case <%= NAME %>_SUBMIT:
-      state.loading = true;
-      break;
+      newState.loading = true;
+      newState.submitted = true;
+      newState.isSuccessful = false;
+  break;
     case   <%= NAME %>_SUCCESS:
-      state.loading = true;
+      newState.loading = false;
+      newState.isSuccessful = true;
       break;
     case <%= NAME %>_FAIL:
-      state.loading = true;
+      newState.errors[payload.path] = payload.message;
+      newState.loading = false;
       break;
   }
-  return state;
+  return newState;
 };

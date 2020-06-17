@@ -1,8 +1,8 @@
 import { ofType } from "redux-observable";
-import { <%= name %>Failure, <%= name %>Success, <%= NAME %>_SUBMIT } from "../_actions/<%= name %>.actions";
+import { <%= name %>Failure, <%= name %>Success, <%= NAME %>_SUBMIT } from "../_actions/<%= _name %>.actions";
 import { catchError, flatMap } from "rxjs/operators";
 import { from }       from "rxjs";
-import { <%= NAME %>_QUERY } from "../_queries/<%= name %>_query.gql";
+import { <%= NAME %>_QUERY } from "../_queries/<%= _name %>_query.gql";
 
 export const <%= name %>GetEpic = (actions$) =>
   actions$.pipe(ofType(<%= NAME %>_SUBMIT)).pipe(flatMap(<%= name %>ExecutionPlan));

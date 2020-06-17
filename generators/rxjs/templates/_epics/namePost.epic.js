@@ -1,11 +1,11 @@
 import { ofType } from "redux-observable";
 import { catchError, flatMap } from "rxjs/operators";
 import { from } from "rxjs";
-import { <%= NAME %>_SUBMIT, nameFailure, nameSuccess } from "../_actions/reduxName.actions";
-import { <%= NAME %>_MUTATION }                    from "../_queries/<%= name %>_mutation.gql";
+import { <%= NAME %>_SUBMIT, <%= name %>Failure, <%= name %>Success } from "../_actions/<%= _name %>.actions";
+import { <%= NAME %>_MUTATION }                    from "../_queries/<%= _name %>_mutation.gql";
 
-export const namePostEpic = (actions$) =>
-  actions$.pipe(ofType(<%= NAME %>_SUBMIT)).pipe(flatMap(nameExecutionPlan));
+export const <%= name %>PostEpic = (actions$) =>
+  actions$.pipe(ofType(<%= NAME %>_SUBMIT)).pipe(flatMap(<%= name %>ExecutionPlan));
 
 const <%= name %>ExecutionPlan = (action) =>
   from(<%= name %>Promise(action.payload))
@@ -15,7 +15,7 @@ const <%= name %>ExecutionPlan = (action) =>
 const <%= name %>Promise = (payload) =>
   api_v1.mutate({
     mutation: <%= NAME %>_MUTATION,
-    variables: { registerInput: payload },
+    variables: { input: payload },
   });
 
 const successActions = (response) => {

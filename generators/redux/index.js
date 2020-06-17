@@ -28,23 +28,25 @@ module.exports = class extends Generator {
   writing() {
     const path=this.options.path?`${this.options.path}/`
       :'';
+    const _name = this.props.name
     const name = this.props.name.toLowerCase()
     const NAME = this.props.name.toUpperCase()
+    const Name = this.props.name.charAt(0).toUpperCase()+this.props.name.slice(1)
 
     this.fs.copyTpl(
       this.templatePath('_actions/reduxName.actions.js'),
-      this.destinationPath(`${path}_actions/${this.props.name}.actions.js`),
-      {name,NAME:NAME},
+      this.destinationPath(`${path}_actions/${_name}.actions.js`),
+      {name,NAME,Name,_name},
     );
     this.fs.copyTpl(
       this.templatePath('_models/reduxName.model.js'),
-      this.destinationPath(`${path}_models/${this.props.name}.model.js`),
-      {name,NAME},
+      this.destinationPath(`${path}_models/${_name}.model.js`),
+      {name,NAME,Name,_name},
     );
     this.fs.copyTpl(
       this.templatePath('_reducers/reduxName.reducer.js'),
-      this.destinationPath(`${path}_reducers/${this.props.name}.reducer.js`),
-      {name,NAME},
+      this.destinationPath(`${path}_reducers/${_name}.reducer.js`),
+      {name,NAME,Name,_name},
     );
   }
 
