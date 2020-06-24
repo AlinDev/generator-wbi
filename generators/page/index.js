@@ -28,6 +28,7 @@ module.exports = class extends Generator {
   writing() {
     const path=this.options.path?`${this.options.path}/`
       :'';
+    const _name = this.props.name
     const NAME = this.props.name.toUpperCase()
     const name = this.props.name.charAt(0).toLowerCase()+this.props.name.slice(1)
     const Name = this.props.name.charAt(0).toUpperCase()+this.props.name.slice(1)
@@ -35,7 +36,7 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('page/Name.jsx'),
       this.destinationPath(`${path}${name}/${Name}.jsx`),
-      {name ,Name},
+      {name ,Name,_name,NAME},
     );
     this.fs.copyTpl(
       this.templatePath('page/name.style.js'),
