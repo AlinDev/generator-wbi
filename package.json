@@ -72,7 +72,9 @@
   },
   "scripts": {
     "pretest": "eslint .",
-    "test": "jest"
+    "test": "jest",
+    "npmCheck": "npm-check -u",
+    "morning": "git pull origin master && git merge master && git status"
   },
   "repository": "boaldeveloper/generator-wbi",
   "license": "MIT"
