@@ -8,10 +8,6 @@ export const  <%= _name %>Reset = (payload) => ({
 type: <%= NAME %>_RESET,
 payload,
 });
-export const  <%= _name %>Submit = (payload) => ({
-  type: <%= NAME %>_SUBMIT,
-  payload,
-});
 
 export const  <%= _name %>Submit = (payload) => ({
 type: <%= NAME %>_UPDATE,
