@@ -2,6 +2,7 @@ import {
 <%= NAME %>_SUBMIT,
   <%= NAME %>_UPDATE,
   <%= NAME %>_SUCCESS,
+  <%= NAME %>_RESET,
  <%= NAME %>_FAIL
 } from "../_actions/<%= name %>.actions.js";
 
@@ -22,18 +23,24 @@ export const  <%= name %>Reducer = (state = new State(), action) => {
       newState = validate(payload.inputId, newState,  <%= Name %>);
       newState.submitted = false;
     break;
+  case <%= NAME %>_RESET:
+  newState = new State();
+  break;
     case <%= NAME %>_SUBMIT:
       newState.loading = true;
       newState.submitted = true;
       newState.isSuccessful = false;
   break;
     case   <%= NAME %>_SUCCESS:
-      newState.loading = false;
+      newState.isLoading = false;
       newState.isSuccessful = true;
       break;
     case <%= NAME %>_FAIL:
-      newState.errors[payload.path] = payload.message;
-      newState.loading = false;
+    newState.isLoading = false;
+    newState.isSuccessful = false;
+    newState.redirect = payload.screen;
+    newState.errors[payload.path] = payload.message;
+    newState.touched[payload.path] = true;
       break;
   }
   return newState;
