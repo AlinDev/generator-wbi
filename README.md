@@ -1,4 +1,5 @@
 # generator-wbi [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+
 > generator for any ReactNative project under the WhiteboxIdeas rules
 
 ## Installation
@@ -18,15 +19,14 @@ yo wbi
 
 ## Getting To Know Yeoman
 
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
+- Yeoman has a heart of gold.
+- Yeoman is a person with feelings and opinions, but is very easy to work with.
+- Yeoman can be too opinionated at times but is easily convinced not to be.
+- Feel free to [learn more about Yeoman](http://yeoman.io/).
 
 ## License
 
 MIT © [Alin Bogdan](whiteboxideas.com)
-
 
 [npm-image]: https://badge.fury.io/js/generator-wbi.svg
 [npm-url]: https://npmjs.org/package/generator-wbi
