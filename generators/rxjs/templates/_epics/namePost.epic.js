@@ -1,6 +1,7 @@
 import { ofType } from "redux-observable";
 import { catchError, flatMap } from "rxjs/operators";
 import { from } from "rxjs";
+import { hideLoading } from "../../_actions/loading.actions";
 import { <%= NAME %>_SUBMIT, <%= _name %>Failure, <%= _name %>Success } from "../_actions/<%= _name %>.actions";
 import { <%= NAME %>_MUTATION }                    from "../_queries/<%= _name %>_mutation.gql";
 
@@ -19,9 +20,9 @@ const <%= _name %>Promise = (payload) =>
   });
 
 const successActions = (response) => {
-  return [<%= name %>Success(response)];
+  return [<%= name %>Success(response),hideLoading({id:"<%= _name %>"})];
 };
 const failActions = (error) => {
-  return [<%= name %>Failure(error)];
+  return [<%= name %>Failure(error),hideLoading({id:"<%= _name %>"})];
 };
 

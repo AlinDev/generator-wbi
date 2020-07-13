@@ -20,11 +20,11 @@ payload,
 });
 
 export const <%= _name %>Success = (payload) => ({
-  type: <%= NAME %>_SUCCESS,
+  type: <%= NAME %>_SUBMIT_SUCCESS,
   payload,
 });
 
 export const <%= _name %>Failure = (payload) => ({
-  type: <%= NAME %>_FAIL,
+  type: <%= NAME %>_SUBMIT_FAIL,
   payload: payload,
 });

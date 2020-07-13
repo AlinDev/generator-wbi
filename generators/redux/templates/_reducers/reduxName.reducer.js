@@ -1,9 +1,9 @@
 import {
 <%= NAME %>_SUBMIT,
   <%= NAME %>_UPDATE,
-  <%= NAME %>_SUCCESS,
+  <%= NAME %>_SUBMIT_SUCCESS,
   <%= NAME %>_RESET,
- <%= NAME %>_FAIL
+ <%= NAME %>_SUBMIT_FAIL
 } from "../_actions/<%= name %>.actions.js";
 
 import { <%= Name %> } from "../_models/<%= name %>.model";
@@ -23,25 +23,24 @@ export const  <%= name %>Reducer = (state = new State(), action) => {
       newState = validate(payload.inputId, newState,  <%= Name %>);
       newState.submitted = false;
     break;
-  case <%= NAME %>_RESET:
-  newState = new State();
-  break;
+    case <%= NAME %>_RESET:
+      newState = new State();
+    break;
     case <%= NAME %>_SUBMIT:
-      newState.loading = true;
       newState.submitted = true;
       newState.isSuccessful = false;
-  break;
-    case   <%= NAME %>_SUCCESS:
-      newState.isLoading = false;
+    break;
+    case   <%= NAME %>_SUBMIT_SUCCESS:
       newState.isSuccessful = true;
-      break;
-    case <%= NAME %>_FAIL:
-    newState.isLoading = false;
-    newState.isSuccessful = false;
-    newState.redirect = payload.screen;
-    newState.errors[payload.path] = payload.message;
-    newState.touched[payload.path] = true;
-      break;
+    break;
+    case <%= NAME %>_SUBMIT_FAIL:
+      newState.isSuccessful = false;
+      if(payload.screen  )newState.redirect = payload.screen;
+      let path = payload?.path;
+      path = path ? path : "default";
+      newState.errors[path] = payload.message;
+      newState.touch[path] = payload.message;
+    break;
   }
   return newState;
 };

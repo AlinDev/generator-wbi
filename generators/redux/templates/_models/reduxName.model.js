@@ -24,7 +24,6 @@ export const <%= Name %> = yup.object().shape({
   code: yup.string().required(),
   touched: yup.object().default({}),
   submitted: yup.bool().default(false),
-  isLoading: yup.bool().default(false),
   isSuccessful: yup.bool().default(false),
   redirect: yup.string().default(""),
 });
