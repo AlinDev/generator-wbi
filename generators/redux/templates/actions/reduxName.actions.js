@@ -15,7 +15,7 @@ payload,
 });
 
 export const  <%= _name %>Submit = (payload) => ({
-type: <%= NAME %>_UPDATE,
+type: <%= NAME %>_SUBMIT,
 payload,
 });
 

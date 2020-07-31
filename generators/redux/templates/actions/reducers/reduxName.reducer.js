@@ -4,9 +4,9 @@ import {
   <%= NAME %>_SUBMIT_SUCCESS,
   <%= NAME %>_RESET,
  <%= NAME %>_SUBMIT_FAIL
-} from "../_actions/<%= name %>.actions.js";
+} from "../<%= name %>.actions";
 
-import { <%= Name %> } from "../_models/<%= name %>.model";
+import { <%= Name %> } from "./models/<%= name %>.model";
 const State = (data) => {
   const casted = <%= Name %>.cast(data);
   return { ...<%= Name %>.default(), ...casted };
@@ -20,6 +20,7 @@ export const  <%= name %>Reducer = (state = new State(), action) => {
     case <%= NAME %>_UPDATE:
       newState[payload.inputId] = payload.text;
       newState.touched[payload.inputId] = true;
+      newState.errors[payload.inputId] = null;
       newState = validate(payload.inputId, newState,  <%= Name %>);
       newState.submitted = false;
     break;
