@@ -1,8 +1,5 @@
 "use strict";
 const Generator = require("yeoman-generator");
-const chalk = require("chalk");
-const yosay = require("yosay");
-const mkdirp = require("mkdirp");
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -36,23 +33,27 @@ module.exports = class extends Generator {
       this.props.name.charAt(0).toUpperCase() + this.props.name.slice(1);
 
     this.fs.copyTpl(
-      this.templatePath("_epics/nameGet.epic.js"),
-      this.destinationPath(`${path}_epics/${_name}Get.epic.js`),
+      this.templatePath("epics/nameGet.epic.js"),
+      this.destinationPath(`${path}_redux/actions/epics/${_name}Get.epic.js`),
       { name, NAME, Name, _name }
     );
     this.fs.copyTpl(
-      this.templatePath("_epics/namePost.epic.js"),
-      this.destinationPath(`${path}_epics/${_name}Post.epic.js`),
+      this.templatePath("epics/namePost.epic.js"),
+      this.destinationPath(`${path}_redux/actions/epics/${_name}Post.epic.js`),
       { name, NAME, Name, _name }
     );
     this.fs.copyTpl(
-      this.templatePath("_queries/name_mutation.gql.js"),
-      this.destinationPath(`${path}_queries/${_name}_mutation.gql.js`),
+      this.templatePath("epics/queries/name_mutation.gql.js"),
+      this.destinationPath(
+        `${path}_redux/actions/epics/queries/${_name}_mutation.gql.js`
+      ),
       { name, NAME, Name, _name }
     );
     this.fs.copyTpl(
-      this.templatePath("_queries/name_query.gql.js"),
-      this.destinationPath(`${path}_queries/${_name}_query.gql.js`),
+      this.templatePath("epics/queries/name_query.gql.js"),
+      this.destinationPath(
+        `${path}_redux/actions/epics/queries/${_name}_query.gql.js`
+      ),
       { name, NAME, Name, _name }
     );
   }

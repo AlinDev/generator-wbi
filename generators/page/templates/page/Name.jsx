@@ -6,7 +6,7 @@ const <%= Name %> = ({route}) => {
 const { nextAddress } = route?.params;
   return (
     <View style={styles.container}>
-      <Text>Page : Name</Text>
+      <Text>Page : <%= name %></Text>
     </View>
   )
 }

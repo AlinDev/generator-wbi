@@ -1,9 +1,5 @@
 "use strict";
 const Generator = require("yeoman-generator");
-const chalk = require("chalk");
-const yosay = require("yosay");
-const mkdirp = require("mkdirp");
-
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
@@ -12,6 +8,12 @@ module.exports = class extends Generator {
 
   prompting() {
     const prompts = [
+      {
+        type: "confirm",
+        name: "rxjs",
+        message: "Install rxjs",
+        default: false,
+      },
       {
         type: "input",
         name: "name",
@@ -35,19 +37,31 @@ module.exports = class extends Generator {
     const Name =
       this.props.name.charAt(0).toUpperCase() + this.props.name.slice(1);
 
+    if (this.props.rxjs)
+      this.composeWith(require.resolve("../rxjs"), { path: this.options.path });
+
     this.fs.copyTpl(
-      this.templatePath("_actions/reduxName.actions.js"),
-      this.destinationPath(`${path}_actions/${_name}.actions.js`),
+      this.templatePath("actions/reduxName.actions.js"),
+      this.destinationPath(`${path}/_redux/actions/${_name}.actions.js`),
       { name, NAME, Name, _name }
     );
     this.fs.copyTpl(
-      this.templatePath("_models/reduxName.model.js"),
-      this.destinationPath(`${path}_models/${_name}.model.js`),
+      this.templatePath("actions/reducers/models/reduxName.model.js"),
+      this.destinationPath(
+        `${path}_redux/actions/reducers/models/${_name}.model.js`
+      ),
       { name, NAME, Name, _name }
     );
     this.fs.copyTpl(
-      this.templatePath("_reducers/reduxName.reducer.js"),
-      this.destinationPath(`${path}_reducers/${_name}.reducer.js`),
+      this.templatePath("actions/reducers/reduxName.reducer.js"),
+      this.destinationPath(
+        `${path}_redux/actions/reducers/${_name}.reducer.js`
+      ),
+      { name, NAME, Name, _name }
+    );
+    this.fs.copyTpl(
+      this.templatePath("errors/errorName.error.js"),
+      this.destinationPath(`${path}_redux/errors/${_name}.errors.js`),
       { name, NAME, Name, _name }
     );
   }

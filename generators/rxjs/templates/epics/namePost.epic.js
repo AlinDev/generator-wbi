@@ -1,16 +1,15 @@
 import { ofType } from "redux-observable";
-import { catchError, flatMap } from "rxjs/operators";
+import { catchError, mergeMap } from "rxjs/operators";
 import { from } from "rxjs";
-import { hideLoading } from "../../_actions/loading.actions";
-import { <%= NAME %>_SUBMIT, <%= _name %>Failure, <%= _name %>Success } from "../_actions/<%= _name %>.actions";
-import { <%= NAME %>_MUTATION }                    from "../_queries/<%= _name %>_mutation.gql";
+import { <%= NAME %>_SUBMIT, <%= _name %>Failure, <%= _name %>Success } from "../<%= _name %>.actions";
+import { <%= NAME %>_MUTATION }                    from "./queries/<%= _name %>_mutation.gql";
 
 export const <%= _name %>PostEpic = (actions$) =>
-  actions$.pipe(ofType(<%= NAME %>_SUBMIT)).pipe(flatMap(<%= name %>ExecutionPlan));
+  actions$.pipe(ofType(<%= NAME %>_SUBMIT)).pipe(mergeMap(<%= name %>ExecutionPlan));
 
 const <%= _name %>ExecutionPlan = (action) =>
   from(<%= name %>Promise(action.payload))
-    .pipe(flatMap((response) => from(successActions(response))))
+    .pipe(mergeMap((response) => from(successActions(response))))
     .pipe(catchError((error) => from(failActions(error))));
 
 const <%= _name %>Promise = (payload) =>

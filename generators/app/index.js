@@ -9,6 +9,7 @@ module.exports = class extends Generator {
     super(args, opts);
     this.argument("path", { type: String, required: false });
   }
+
   prompting() {
     // Have Yeoman greet the user.
     this.log(yosay(`Welcome to the rad ${chalk.red("wbi")} generator!`));
@@ -21,15 +22,9 @@ module.exports = class extends Generator {
         default: "chapter",
       },
       {
-        type: "",
+        type: "confirm",
         name: "redux",
         message: "Install redux?",
-        default: false,
-      },
-      {
-        type: "confirm",
-        name: "rxjs",
-        message: "Install rxjs",
         default: false,
       },
     ];
@@ -53,9 +48,6 @@ module.exports = class extends Generator {
       this.composeWith(require.resolve("../redux"), {
         path: this.options.path,
       });
-    if (this.props.rxjs)
-      this.composeWith(require.resolve("../rxjs"), { path: this.options.path });
-
     mkdirp.sync(`${this.options.path}/`);
     this.fs.copyTpl(
       this.templatePath(),

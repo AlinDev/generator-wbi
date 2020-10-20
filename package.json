@@ -1,6 +1,6 @@
 {
   "name": "generator-wbi",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "generator for any ReactNative project under the WhiteboxIdeas rules",
   "homepage": "",
   "author": {
@@ -17,16 +17,16 @@
     "yeoman-generator"
   ],
   "devDependencies": {
-    "yeoman-test": "^2.6.0",
+    "yeoman-test": "^3.0.0",
     "yeoman-assert": "^3.1.0",
-    "eslint": "^7.4.0",
-    "prettier": "^2.0.5",
+    "eslint": "^7.7.0",
+    "prettier": "^2.1.1",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.11",
+    "lint-staged": "^10.2.13",
     "eslint-config-prettier": "^6.6.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-config-xo": "^0.32.0",
-    "jest": "^26.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-config-xo": "^0.32.1",
+    "jest": "^26.4.2",
     "npm-check": "5.9.2"
   },
   "engines": {
