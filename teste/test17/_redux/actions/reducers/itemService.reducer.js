@@ -1,34 +1,34 @@
 import {
-  <%= NA_ME %>_API,
-  <%= NA_ME %>_UPDATE,
-  <%= NA_ME %>_API_SUCCESS,
-  <%= NA_ME %>_RESET,
- <%= NA_ME %>_API_FAIL
-} from "../<%= name %>.actions";
+  ITEM_SERVICE_API,
+  ITEM_SERVICE_UPDATE,
+  ITEM_SERVICE_API_SUCCESS,
+  ITEM_SERVICE_RESET,
+ ITEM_SERVICE_API_FAIL
+} from "../itemService.actions";
 
-import { <%= Name %> } from "./models/<%=  name %>.model";
+import { ItemService } from "./models/itemService.model";
 
-export const  <%= name %>Reducer = (state = <%=  Name %>, action) => {
+export const  itemServiceReducer = (state = ItemService, action) => {
   const { type, payload } = action;
   let newState = { ...state };
 
   let path;
   switch ( type) {
-    case <%= NA_ME %>_UPDATE:
+    case ITEM_SERVICE_UPDATE:
       newState[payload.inputId] = payload.text;
       newState.submitted = false;
     break;
-    case <%= NA_ME %>_RESET:
+    case ITEM_SERVICE_RESET:
       newState = Name;
     break;
-    case <%= NA_ME %>_API:
+    case ITEM_SERVICE_API:
       newState.submitted = true;
       newState.isSuccessful = false;
     break;
-    case   <%= NA_ME %>_API_SUCCESS:
+    case   ITEM_SERVICE_API_SUCCESS:
       newState.isSuccessful = true;
     break;
-    case <%= NA_ME %>_API_FAIL:
+    case ITEM_SERVICE_API_FAIL:
       newState.isSuccessful = false;
 
       newState.error  =  payload.message;

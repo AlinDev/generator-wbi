@@ -1,34 +1,34 @@
 import {
-  <%= NA_ME %>_API,
-  <%= NA_ME %>_UPDATE,
-  <%= NA_ME %>_API_SUCCESS,
-  <%= NA_ME %>_RESET,
- <%= NA_ME %>_API_FAIL
-} from "../<%= name %>.actions";
+  ALIN_BOGDAN_API,
+  ALIN_BOGDAN_UPDATE,
+  ALIN_BOGDAN_API_SUCCESS,
+  ALIN_BOGDAN_RESET,
+ ALIN_BOGDAN_API_FAIL
+} from "../alinBogdan.actions";
 
-import { <%= Name %> } from "./models/<%=  name %>.model";
+import { AlinBogdan } from "./models/alinBogdan.model";
 
-export const  <%= name %>Reducer = (state = <%=  Name %>, action) => {
+export const  alinBogdanReducer = (state = AlinBogdan, action) => {
   const { type, payload } = action;
   let newState = { ...state };
 
   let path;
   switch ( type) {
-    case <%= NA_ME %>_UPDATE:
+    case ALIN_BOGDAN_UPDATE:
       newState[payload.inputId] = payload.text;
       newState.submitted = false;
     break;
-    case <%= NA_ME %>_RESET:
+    case ALIN_BOGDAN_RESET:
       newState = Name;
     break;
-    case <%= NA_ME %>_API:
+    case ALIN_BOGDAN_API:
       newState.submitted = true;
       newState.isSuccessful = false;
     break;
-    case   <%= NA_ME %>_API_SUCCESS:
+    case   ALIN_BOGDAN_API_SUCCESS:
       newState.isSuccessful = true;
     break;
-    case <%= NA_ME %>_API_FAIL:
+    case ALIN_BOGDAN_API_FAIL:
       newState.isSuccessful = false;
 
       newState.error  =  payload.message;

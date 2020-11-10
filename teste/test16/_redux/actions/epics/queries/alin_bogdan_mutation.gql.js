@@ -1,17 +1,17 @@
 import gql from "graphql-tag";
 
-export const <%= NA_ME %>_MUTATION = gql`
-  mutation <%= name %>(
+export const ALIN_BOGDAN_MUTATION = gql`
+  mutation alinBogdan(
     $input:  Input!
     $formSerializer: any
   ) {
-      <%= name %>(
+      alinBogdan(
         input: $input
       )
     @rest(
       method: "POST"
       path: "/...{args.input}"
-      type: "<%= name %>M"
+      type: "alinBogdanM"
       bodySerializer: $formSerializer
     ) {
     __typename

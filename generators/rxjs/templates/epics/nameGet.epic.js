@@ -1,25 +1,26 @@
 import { ofType } from "redux-observable";
-import { <%= _name %>Failure, <%= _name %>Success, <%= NAME %>_SUBMIT } from "../<%= _name %>.actions";
+import { <%= name %>ApiFailure, <%= name %>ApiSuccess, <%= NA_ME %>_API } from "../<%= name %>.actions";
 import { catchError, mergeMap } from "rxjs/operators";
 import { from }       from "rxjs";
-import { <%= NAME %>_QUERY } from "./queries/<%= _name %>_query.gql";
+import { <%= NA_ME %>_QUERY } from "./queries/<%= na_me %>_query.gql";
 
-export const <%= _name %>GetEpic = (actions$) =>
-  actions$.pipe(ofType(<%= NAME %>_SUBMIT)).pipe(mergeMap(<%= _name %>ExecutionPlan));
+export const <%= name %>GetEpic = (actions$) =>
+  actions$.pipe(ofType(<%= NA_ME %>_API)).pipe(mergeMap(<%= name %>ExecutionPlan));
 
-const <%= _name %>ExecutionPlan = (action) =>
-  from(<%= _name %>Promise(action.payload))
+const <%= name %>ExecutionPlan = (action) =>
+  from(<%= name %>Promise(action.payload))
     .pipe(mergeMap((response) => from(successActions(response))))
     .pipe(catchError((error) => from(failActions(error))));
 
-const <%= _name %>Promise = (payload) => {
-  return api_v1.query({
-    query: <%= NAME %>_QUERY,
-  variables:{
+const <%= name %>Promise = (payload) => {
+  const api = api_auth_v1_factory(payload.accessToken);
+  api.query({
+    query: <%= NA_ME %>_QUERY,
+    variables:{
       name:payload.name,
-  }
+    }
   });
 };
 
-const successActions = (response) => [<%= name %>Success(response),hideLoading({id:"<%= _name %>"})];
-const failActions = (error) => [<%= _name %>Failure(error),hideLoading({id:"<%= _name %>"})];
+const successActions = (response) => [<%= name %>ApiSuccess(response),hideLoading({id:"<%= name %>"})];
+const failActions = (error) => [<%= name %>ApiFailure(error),hideLoading({id:"<%= name %>"})];

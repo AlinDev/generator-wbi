@@ -1,30 +1,30 @@
-export const <%= NAME %>_SUBMIT= "<%= NAME %>_SUBMIT";
-export const <%= NAME %>_UPDATE = "<%= NAME %>_UPDATE";
-export const <%= NAME %>_SUBMIT_SUCCESS = "<%= NAME %>_SUBMIT_SUCCESS";
-export const <%= NAME %>_SUBMIT_FAIL = "<%= NAME %>_SUBMIT_FAIL";
-export const <%= NAME %>_RESET = "<%= NAME %>_RESET";
+export const <%= NA_ME %>_UPDATE = "<%= NA_ME %>_UPDATE";
+export const <%= NA_ME %>_RESET = "<%= NA_ME %>_RESET";
+export const <%= NA_ME %>_API= "<%= NA_ME %>_API";
+export const <%= NA_ME %>_API_SUCCESS = "<%= NA_ME %>_API_SUCCESS";
+export const <%= NA_ME %>_API_FAIL = "<%= NA_ME %>_API_FAIL";
 
-export const  <%= _name %>Update = (payload) => ({
-  type: <%= NAME %>_UPDATE,
+export const  <%= name %>Update = (payload) => ({
+  type: <%= NA_ME %>_UPDATE,
   payload,
 });
 
-export const  <%= _name %>Reset = (payload) => ({
-  type: <%= NAME %>_RESET,
+export const  <%= name %>Reset = (payload) => ({
+  type: <%= NA_ME %>_RESET,
   payload,
 });
 
-export const  <%= _name %>Submit = (payload) => ({
-  type: <%= NAME %>_SUBMIT,
+export const  <%= name %>Api = (payload) => ({
+  type: <%= NA_ME %>_API,
   payload,
 });
 
-export const <%= _name %>Success = (payload) => ({
-  type: <%= NAME %>_SUBMIT_SUCCESS,
+export const <%= name %>ApiSuccess = (payload) => ({
+  type: <%= NA_ME %>_API_SUCCESS,
   payload,
 });
 
-export const <%= _name %>Failure = (payload) => ({
-  type: <%= NAME %>_SUBMIT_FAIL,
+export const <%= name %>ApiFailure = (payload) => ({
+  type: <%= NA_ME %>_API_FAIL,
   payload: payload,
 });

@@ -1,4 +1,4 @@
- export const <%= Name %> =  {
+ export const ItemService =  {
   submitted:  false ,
   isSuccessful:  false ,
   redirect: "" ,

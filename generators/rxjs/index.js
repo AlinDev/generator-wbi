@@ -13,7 +13,7 @@ module.exports = class extends Generator {
         type: "input",
         name: "name",
         message: "What is your the name of your rxjs set?",
-        default: this.options.name,
+        default: this.options.redux ,
       },
     ];
 
@@ -26,43 +26,47 @@ module.exports = class extends Generator {
 
   writing() {
     const path = this.options.path ? `${this.options.path}/` : "";
-    const chapter = this.options.chapter ;
-    let _name = this.props.name;
-    _name= this.toCamelCase(_name.split(" "))
-    const name = this.props.name.toLowerCase();
-    const NAME = this.props.name.toUpperCase();
+    const chapter = this.options.chapter ? `${this.options.chapter}/` : "";
+
+    let naMe   =   this.nameToCamelCase3()
+    let NA_ME  =    this.props.name.trim().replace(" ","_").toUpperCase()
     const Name =
-      this.props.name.charAt(0).toUpperCase() + this.props.name.slice(1);
+            naMe.charAt(0).toUpperCase() + naMe.slice(1);
+    const name =
+            naMe.charAt(0).toLowerCase() + naMe.slice(1);
+
+    const na_me = NA_ME.toLowerCase();
 
     this.fs.copyTpl(
       this.templatePath("epics/nameGet.epic.js"),
-      this.destinationPath(`${path}_redux/actions/epics/${_name}Get.epic.js`),
-      { name, NAME, Name, _name }
+      this.destinationPath(`${path}_redux/actions/epics/${name}Get.epic.js`),
+      { na_me,  NA_ME, Name,  name }
     );
     this.fs.copyTpl(
       this.templatePath("epics/namePost.epic.js"),
-      this.destinationPath(`${path}_redux/actions/epics/${_name}Post.epic.js`),
-      { name, NAME, Name, _name }
+      this.destinationPath(`${path}_redux/actions/epics/${name}Post.epic.js`),
+      { na_me, NA_ME , Name,  name }
     );
     this.fs.copyTpl(
       this.templatePath("epics/queries/name_mutation.gql.js"),
       this.destinationPath(
-        `${path}_redux/actions/epics/queries/${_name}_mutation.gql.js`
+        `${path}_redux/actions/epics/queries/${na_me}_mutation.gql.js`
       ),
-      { name, NAME, Name, _name }
+      { na_me, NA_ME, Name, name  }
     );
     this.fs.copyTpl(
       this.templatePath("epics/queries/name_query.gql.js"),
       this.destinationPath(
-        `${path}_redux/actions/epics/queries/${_name}_query.gql.js`
+        `${path}_redux/actions/epics/queries/${na_me}_query.gql.js`
       ),
-      { name, NAME, Name, _name }
+      { na_me, NA_ME, Name, name }
     );
   }
 
 
 // convert the input array to camel case
-  toCamelCase(inputArray) {
+  nameToCamelCase3( ) {
+    let inputArray =  this.props.name.split(" ")
     let result = ""
     for (let i = 0, len = inputArray.length; i < len; i++) {
       let currentStr = inputArray[i]

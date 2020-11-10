@@ -56,7 +56,7 @@ module.exports = class extends Generator {
       this.composeWith(require.resolve("../redux"), {
         path:  path,
         chapter: chapter,
-        page:_name
+        page:this.props.name
       });
   }
 

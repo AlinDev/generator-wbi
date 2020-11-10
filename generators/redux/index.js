@@ -33,48 +33,55 @@ module.exports = class extends Generator {
     const path = this.options.path ? `${this.options.path}/` : "";
     const chapter = this.options.chapter ? `${this.options.chapter}/` : "";
     const page = this.options.page
-    let _name = this.props.name;
-    _name= this.toCamelCase(_name.split(" "))
-    const name = this.props.name.toLowerCase();
-    const NAME = this.props.name.toUpperCase();
-    const Name =
-      this.props.name.charAt(0).toUpperCase() + this.props.name.slice(1);
+    let naMe   =  this.nameToCamelCase2( )
+
+    const NA_ME =  this.props.name.trim().replace(" ","_").toUpperCase()
+    const Name  =
+            naMe.charAt(0).toUpperCase() + naMe.slice(1);
+    const name  =
+            naMe.charAt(0).toLowerCase() + naMe.slice(1);
+    const na_me = NA_ME.toLowerCase();
 
     if (this.props.rxjs)
       this.composeWith(require.resolve("../rxjs"), {
         path: this.options.path,
-        name: _name,
-        chapter: chapter });
+        redux: this.props.name,
+        chapter: this.props.name });
 
     this.fs.copyTpl(
       this.templatePath("actions/reduxName.actions.js"),
-      this.destinationPath(`${path}_redux/actions/${_name}.actions.js`),
-      { name, NAME, Name, _name }
+      this.destinationPath(`${path}_redux/actions/${naMe}.actions.js`),
+      {   na_me,  NA_ME, Name,   name }
     );
     this.fs.copyTpl(
       this.templatePath("actions/reducers/models/reduxName.model.js"),
       this.destinationPath(
-        `${path}_redux/actions/reducers/models/${_name}.model.js`
+        `${path}_redux/actions/reducers/models/${naMe}.model.js`
       ),
-      { name, NAME, Name, _name }
+      {na_me,  NA_ME, Name,   name }
     );
     this.fs.copyTpl(
       this.templatePath("actions/reducers/reduxName.reducer.js"),
       this.destinationPath(
-        `${path}_redux/actions/reducers/${_name}.reducer.js`
+        `${path}_redux/actions/reducers/${naMe}.reducer.js`
       ),
-      { name, NAME, Name, _name }
+      { na_me,  NA_ME, Name,   name }
     );
     this.fs.copyTpl(
       this.templatePath("errors/errorName.error.js"),
-      this.destinationPath(`${path}_redux/errors/${_name}.errors.js`),
-      { name, NAME, Name, _name }
+      this.destinationPath(`${path}_redux/errors/${naMe}.errors.js`),
+      { na_me,  NA_ME, Name,   name}
     );
   }
 
+  nameToUpperCaseUnderscore(){
 
+  return   this.props.name.replace(" ","_").toUpperCase()
+  }
 // convert the input array to camel case
-  toCamelCase(inputArray) {
+  nameToCamelCase2( ) {
+
+    let inputArray =  this.props.name.split(" ")
     let result = ""
     for (let i = 0, len = inputArray.length; i < len; i++) {
       let currentStr = inputArray[i]

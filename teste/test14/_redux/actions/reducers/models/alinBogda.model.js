@@ -1,6 +1,5 @@
- export const <%= Name %> =  {
+ export const AlinBogda =  {
   submitted:  false ,
   isSuccessful:  false ,
   redirect: "" ,
-  error:  "" ,
 } ;

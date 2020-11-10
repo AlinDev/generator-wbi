@@ -1,17 +1,17 @@
 import gql from "graphql-tag";
 
-export const <%= NA_ME %>_QUERY = gql`
-  query <%= name %>(
+export const ALIN_BOGDAN_QUERY = gql`
+  query alinBogdan(
       $input:  Input!
       $formSerializer: any
   ) {
-    <%= name %>(
+    alinBogdan(
       input: $input
     )
     @rest(
       method:  "GET"
       path: "/...{args.input}"
-      type: "<%= name %>Q"
+      type: "alinBogdanQ"
       bodySerializer: $formSerializer
     ) {
     __typename
