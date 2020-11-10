@@ -12,12 +12,12 @@ module.exports = class extends Generator {
         type: "confirm",
         name: "rxjs",
         message: "Install rxjs",
-        default: false,
+        default: true,
       },
       {
         type: "input",
         name: "name",
-        message: "What is your the name of your redux pair?",
+        message: "What is your the name of your redux[rxjs] pair?",
         default:  this.options.page ,
       },
     ];
@@ -42,6 +42,7 @@ module.exports = class extends Generator {
     if (this.props.rxjs)
       this.composeWith(require.resolve("../rxjs"), {
         path: this.options.path,
+        name: _name,
         chapter: chapter });
 
     this.fs.copyTpl(

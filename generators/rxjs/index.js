@@ -13,7 +13,7 @@ module.exports = class extends Generator {
         type: "input",
         name: "name",
         message: "What is your the name of your rxjs set?",
-        default: "rxjs",
+        default: this.options.name,
       },
     ];
 

@@ -23,11 +23,6 @@ module.exports = class extends Generator {
         name: "redux",
         message: "Install redux?",
         default: true,
-      }, {
-        type: "confirm",
-        name: "rxjs",
-        message: "Install rxjs?",
-        default: true,
       },
     ];
     return this.prompt(prompts).then(
@@ -59,7 +54,6 @@ module.exports = class extends Generator {
     if (this.props.redux)
       this.composeWith(require.resolve("../redux"), {
         path:  path,
-        rxjs:   this.options.rxjs,
         chapter: chapter,
         page:_name
       });
