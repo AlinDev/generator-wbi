@@ -17,7 +17,7 @@ module.exports = class extends Generator {
     const prompts = [
       {
         type: "input",
-        name: "name",
+        name: "chapter",
         message: "What is your the name of your chapter?",
         default: "chapter",
       }
@@ -31,18 +31,18 @@ module.exports = class extends Generator {
 
   writing() {
 
-    const path = this.options.path ? `${this.options.path}/` : "";
-    const _name = this.props.name;
-    const NAME = this.props.name.toUpperCase();
-    const name = this.props.name.toLowerCase();
+    const path = this.options.path  ? `${this.options.path}/` : "";
+    const _name = this.props.chapter;
+    const NAME = _name.toUpperCase();
+    const name = _name.toLowerCase();
     const Name = name.charAt(0).toUpperCase() + name.slice(1);
-
+    console.log("path",path)
     this.composeWith(require.resolve("../page"), {
       path: `${path}${_name}` + "/pages",
       chapter: _name
     });
 
-    mkdirp.sync(`${this.options.path}/`);
+    mkdirp.sync(`${path}`);
     this.fs.copyTpl(
       this.templatePath(),
       this.destinationPath(`${path}${_name}`),
