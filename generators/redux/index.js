@@ -42,7 +42,7 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
       this.templatePath("actions/reduxName.actions.js"),
-      this.destinationPath(`${path}/_redux/actions/${_name}.actions.js`),
+      this.destinationPath(`${path}_redux/actions/${_name}.actions.js`),
       { name, NAME, Name, _name }
     );
     this.fs.copyTpl(

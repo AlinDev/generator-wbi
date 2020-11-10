@@ -5,18 +5,18 @@ export const <%= NAME %>_SUBMIT_FAIL = "<%= NAME %>_SUBMIT_FAIL";
 export const <%= NAME %>_RESET = "<%= NAME %>_RESET";
 
 export const  <%= _name %>Update = (payload) => ({
-type: <%= NAME %>_UPDATE,
-payload,
+  type: <%= NAME %>_UPDATE,
+  payload,
 });
 
 export const  <%= _name %>Reset = (payload) => ({
-type: <%= NAME %>_RESET,
-payload,
+  type: <%= NAME %>_RESET,
+  payload,
 });
 
 export const  <%= _name %>Submit = (payload) => ({
-type: <%= NAME %>_SUBMIT,
-payload,
+  type: <%= NAME %>_SUBMIT,
+  payload,
 });
 
 export const <%= _name %>Success = (payload) => ({

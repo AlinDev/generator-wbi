@@ -5,10 +5,10 @@ import { from }       from "rxjs";
 import { <%= NAME %>_QUERY } from "./queries/<%= _name %>_query.gql";
 
 export const <%= _name %>GetEpic = (actions$) =>
-  actions$.pipe(ofType(<%= NAME %>_SUBMIT)).pipe(mergeMap(<%= name %>ExecutionPlan));
+  actions$.pipe(ofType(<%= NAME %>_SUBMIT)).pipe(mergeMap(<%= _name %>ExecutionPlan));
 
 const <%= _name %>ExecutionPlan = (action) =>
-  from(<%= name %>Promise(action.payload))
+  from(<%= _name %>Promise(action.payload))
     .pipe(mergeMap((response) => from(successActions(response))))
     .pipe(catchError((error) => from(failActions(error))));
 

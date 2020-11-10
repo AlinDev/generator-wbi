@@ -25,7 +25,12 @@ module.exports = class extends Generator {
         type: "confirm",
         name: "redux",
         message: "Install redux?",
-        default: false,
+        default: true,
+      }, {
+        type: "confirm",
+        name: "rxjs",
+        message: "Install rxjs?",
+        default: true,
       },
     ];
     return this.prompt(prompts).then(
@@ -36,22 +41,25 @@ module.exports = class extends Generator {
   }
 
   writing() {
+
+    const path = this.options.path ? `${this.options.path}/` : "";
     const _name = this.props.name;
     const NAME = this.props.name.toUpperCase();
     const name = this.props.name.toLowerCase();
     const Name = name.charAt(0).toUpperCase() + name.slice(1);
 
     this.composeWith(require.resolve("../page"), {
-      path: this.options.path + "/pages",
+      path: path + "/pages",
     });
     if (this.props.redux)
       this.composeWith(require.resolve("../redux"), {
-        path: this.options.path,
+        path:  path,
+        rxjs:  rxjs
       });
     mkdirp.sync(`${this.options.path}/`);
     this.fs.copyTpl(
       this.templatePath(),
-      this.destinationPath(`${this.options.path}/`),
+      this.destinationPath(`${path}`),
       { name, Name, NAME, _name }
     );
   }

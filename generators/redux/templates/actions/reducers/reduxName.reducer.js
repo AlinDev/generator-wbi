@@ -1,12 +1,12 @@
 import {
-<%= NAME %>_SUBMIT,
+  <%= NAME %>_SUBMIT,
   <%= NAME %>_UPDATE,
   <%= NAME %>_SUBMIT_SUCCESS,
   <%= NAME %>_RESET,
  <%= NAME %>_SUBMIT_FAIL
-} from "../<%= name %>.actions";
+} from "../<%= _name %>.actions";
 
-import { <%= Name %> } from "./models/<%= name %>.model";
+import { <%= Name %> } from "./models/<%= _name %>.model";
 const State = (data) => {
   const casted = <%= Name %>.cast(data);
   return { ...<%= Name %>.default(), ...casted };
@@ -14,6 +14,7 @@ const State = (data) => {
 export const  <%= name %>Reducer = (state = new State(), action) => {
   const { type, payload } = action;
   let newState = { ...state };
+  let path;
   newState.touched = { ...state.touched };
   newState.errors = { ...state.errors };
   switch ( type) {
@@ -37,7 +38,7 @@ export const  <%= name %>Reducer = (state = new State(), action) => {
     case <%= NAME %>_SUBMIT_FAIL:
       newState.isSuccessful = false;
       if(payload.screen  )newState.redirect = payload.screen;
-      let path = payload?.path;
+      path = payload?.path;
       path = path ? path : "default";
       newState.errors[path] = payload.message;
       newState.touch[path] = payload.message;

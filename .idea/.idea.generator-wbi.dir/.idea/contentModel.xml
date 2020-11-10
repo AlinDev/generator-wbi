@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="node_modules/@babel/parser" t="IncludeRecursive" />
+      <e p="node_modules/@babel/types" t="IncludeRecursive" />
+      <e p="node_modules/@bcoe/v8-coverage" t="IncludeRecursive" />
+      <e p="node_modules/@jest/console" t="IncludeRecursive" />
+      <e p="node_modules/@jest/core" t="IncludeRecursive" />
+      <e p="node_modules/@jest/environment" t="IncludeRecursive" />
+      <e p="node_modules/@jest/fake-timers" t="IncludeRecursive" />
+      <e p="node_modules/@jest/globals" t="IncludeRecursive" />
+      <e p="node_modules/@jest/reporters" t="IncludeRecursive" />
+      <e p="node_modules/@jest/source-map" t="IncludeRecursive" />
+      <e p="node_modules/@jest/test-result" t="IncludeRecursive" />
+      <e p="node_modules/@jest/test-sequencer" t="IncludeRecursive" />
+      <e p="node_modules/@jest/transform" t="IncludeRecursive" />
+      <e p="node_modules/@jest/types" t="IncludeRecursive" />
+      <e p="node_modules/@types" t="IncludeRecursive">
+        <e p="babel__generator" t="IncludeRecursive" />
+        <e p="babel__template" t="IncludeRecursive" />
+        <e p="babel__traverse" t="IncludeRecursive" />
+        <e p="istanbul-lib-coverage" t="IncludeRecursive" />
+        <e p="istanbul-lib-report" t="IncludeRecursive" />
+        <e p="minimatch" t="IncludeRecursive" />
+        <e p="node" t="IncludeRecursive" />
+        <e p="yargs-parser" t="IncludeRecursive" />
+      </e>
+      <e p="node_modules/ansi-escapes" t="IncludeRecursive" />
+      <e p="node_modules/ansi-regex" t="IncludeRecursive" />
+      <e p="node_modules/anymatch" t="IncludeRecursive" />
+      <e p="node_modules/callsites" t="IncludeRecursive" />
+      <e p="node_modules/camelcase" t="IncludeRecursive" />
+      <e p="node_modules/chalk" t="IncludeRecursive" />
+      <e p="node_modules/char-regex" t="IncludeRecursive" />
+      <e p="node_modules/collect-v8-coverage" t="IncludeRecursive" />
+      <e p="node_modules/detect-newline" t="IncludeRecursive" />
+      <e p="node_modules/diff-sequences" t="IncludeRecursive" />
+      <e p="node_modules/emittery" t="IncludeRecursive" />
+      <e p="node_modules/eslint" t="IncludeRecursive" />
+      <e p="node_modules/eslint-config-prettier" t="IncludeRecursive" />
+      <e p="node_modules/eslint-config-xo" t="IncludeRecursive" />
+      <e p="node_modules/eslint-plugin-prettier" t="IncludeRecursive" />
+      <e p="node_modules/execa" t="IncludeRecursive" />
+      <e p="node_modules/expect" t="IncludeRecursive" />
+      <e p="node_modules/fast-json-stable-stringify" t="IncludeRecursive" />
+      <e p="node_modules/fsevents" t="IncludeRecursive" />
+      <e p="node_modules/globby" t="IncludeRecursive" />
+      <e p="node_modules/husky" t="IncludeRecursive" />
+      <e p="node_modules/ignore" t="IncludeRecursive" />
+      <e p="node_modules/is-generator-fn" t="IncludeRecursive" />
+      <e p="node_modules/jest" t="IncludeRecursive" />
+      <e p="node_modules/jest-changed-files" t="IncludeRecursive" />
+      <e p="node_modules/jest-config" t="IncludeRecursive" />
+      <e p="node_modules/jest-diff" t="IncludeRecursive" />
+      <e p="node_modules/jest-docblock" t="IncludeRecursive" />
+      <e p="node_modules/jest-each" t="IncludeRecursive" />
+      <e p="node_modules/jest-environment-jsdom" t="IncludeRecursive" />
+      <e p="node_modules/jest-environment-node" t="IncludeRecursive" />
+      <e p="node_modules/jest-get-type" t="IncludeRecursive" />
+      <e p="node_modules/jest-haste-map" t="IncludeRecursive" />
+      <e p="node_modules/jest-jasmine2" t="IncludeRecursive" />
+      <e p="node_modules/jest-leak-detector" t="IncludeRecursive" />
+      <e p="node_modules/jest-matcher-utils" t="IncludeRecursive" />
+      <e p="node_modules/jest-message-util" t="IncludeRecursive" />
+      <e p="node_modules/jest-mock" t="IncludeRecursive" />
+      <e p="node_modules/jest-pnp-resolver" t="IncludeRecursive" />
+      <e p="node_modules/jest-regex-util" t="IncludeRecursive" />
+      <e p="node_modules/jest-resolve" t="IncludeRecursive" />
+      <e p="node_modules/jest-resolve-dependencies" t="IncludeRecursive" />
+      <e p="node_modules/jest-runner" t="IncludeRecursive" />
+      <e p="node_modules/jest-runtime" t="IncludeRecursive" />
+      <e p="node_modules/jest-serializer" t="IncludeRecursive" />
+      <e p="node_modules/jest-snapshot" t="IncludeRecursive" />
+      <e p="node_modules/jest-util" t="IncludeRecursive" />
+      <e p="node_modules/jest-validate" t="IncludeRecursive" />
+      <e p="node_modules/jest-watcher" t="IncludeRecursive" />
+      <e p="node_modules/jest-worker" t="IncludeRecursive" />
+      <e p="node_modules/leven" t="IncludeRecursive" />
+      <e p="node_modules/lint-staged" t="IncludeRecursive" />
+      <e p="node_modules/mimic-fn" t="IncludeRecursive" />
+      <e p="node_modules/npm-check" t="IncludeRecursive" />
+      <e p="node_modules/npm-run-path" t="IncludeRecursive" />
+      <e p="node_modules/onetime" t="IncludeRecursive" />
+      <e p="node_modules/p-each-series" t="IncludeRecursive" />
+      <e p="node_modules/pirates" t="IncludeRecursive" />
+      <e p="node_modules/pkg-dir" t="IncludeRecursive" />
+      <e p="node_modules/pretty-format" t="IncludeRecursive" />
+      <e p="node_modules/string-length" t="IncludeRecursive" />
+      <e p="node_modules/terminal-link" t="IncludeRecursive" />
+      <e p="node_modules/throat" t="IncludeRecursive" />
+      <e p="node_modules/type-fest" t="IncludeRecursive" />
+      <e p="node_modules/v8-to-istanbul" t="IncludeRecursive" />
+      <e p="node_modules/yeoman-assert" t="IncludeRecursive" />
+      <e p="node_modules/yeoman-generator" t="IncludeRecursive" />
+      <e p="node_modules/yeoman-test" t="IncludeRecursive" />
+      <e p="node_modules/yosay" t="IncludeRecursive" />
+    </e>
+    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/scratches" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.2/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.2/resharper-host/local/Transient/Rider/v202/SolutionCaches/_.19.01" t="ExcludeRecursive" />
+  </component>
+</project>
