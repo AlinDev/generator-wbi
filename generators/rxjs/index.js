@@ -35,25 +35,25 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
       this.templatePath("epics/nameGet.epic.js"),
-      this.destinationPath(`${path}${chapter}_redux/actions/epics/${_name}Get.epic.js`),
+      this.destinationPath(`${path}_redux/actions/epics/${_name}Get.epic.js`),
       { name, NAME, Name, _name }
     );
     this.fs.copyTpl(
       this.templatePath("epics/namePost.epic.js"),
-      this.destinationPath(`${path}${chapter}_redux/actions/epics/${_name}Post.epic.js`),
+      this.destinationPath(`${path}_redux/actions/epics/${_name}Post.epic.js`),
       { name, NAME, Name, _name }
     );
     this.fs.copyTpl(
       this.templatePath("epics/queries/name_mutation.gql.js"),
       this.destinationPath(
-        `${path}${chapter}_redux/actions/epics/queries/${_name}_mutation.gql.js`
+        `${path}_redux/actions/epics/queries/${_name}_mutation.gql.js`
       ),
       { name, NAME, Name, _name }
     );
     this.fs.copyTpl(
       this.templatePath("epics/queries/name_query.gql.js"),
       this.destinationPath(
-        `${path}${chapter}_redux/actions/epics/queries/${_name}_query.gql.js`
+        `${path}_redux/actions/epics/queries/${_name}_query.gql.js`
       ),
       { name, NAME, Name, _name }
     );

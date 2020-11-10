@@ -20,18 +20,7 @@ module.exports = class extends Generator {
         name: "name",
         message: "What is your the name of your chapter?",
         default: "chapter",
-      },
-      {
-        type: "confirm",
-        name: "redux",
-        message: "Install redux?",
-        default: true,
-      }, {
-        type: "confirm",
-        name: "rxjs",
-        message: "Install rxjs?",
-        default: true,
-      },
+      }
     ];
     return this.prompt(prompts).then(
       function (props) {
@@ -49,15 +38,10 @@ module.exports = class extends Generator {
     const Name = name.charAt(0).toUpperCase() + name.slice(1);
 
     this.composeWith(require.resolve("../page"), {
-      path: path + "/pages",
+      path: `${path}${_name}` + "/pages",
       chapter: _name
     });
-    if (this.props.redux)
-      this.composeWith(require.resolve("../redux"), {
-        path:  path,
-        rxjs:   this.options.rxjs,
-        chapter: _name
-      });
+
     mkdirp.sync(`${this.options.path}/`);
     this.fs.copyTpl(
       this.templatePath(),

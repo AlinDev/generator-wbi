@@ -16,7 +16,18 @@ module.exports = class extends Generator {
         type: "input",
         name: "name",
         message: "What is your the name of your page?",
-        default: "page",
+        default: `${this.options.chapter}`,
+      },
+      {
+        type: "confirm",
+        name: "redux",
+        message: "Install redux?",
+        default: true,
+      }, {
+        type: "confirm",
+        name: "rxjs",
+        message: "Install rxjs?",
+        default: true,
       },
     ];
     return this.prompt(prompts).then(
@@ -28,7 +39,7 @@ module.exports = class extends Generator {
 
   writing() {
     const path = this.options.path ? `${this.options.path}/` : "";
-    const chapter = this.options.chapter ;
+    const chapter = this.options.chapter ? `${this.options.chapter}/` : "";
     const _name = this.props.name;
     const NAME = this.props.name.toUpperCase();
     const name =
@@ -38,12 +49,19 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
       this.templatePath("page/Name.jsx"),
-      this.destinationPath(`${path}${chapter}${name}/${Name}.jsx`),
+      this.destinationPath(`${path}${name}/${Name}.jsx`),
       { name, Name, _name, NAME }
     );
     this.fs.copyTpl(
       this.templatePath("page/name.style.js"),
-      this.destinationPath(`${path}${chapter}${name}/${name}.style.js`)
+      this.destinationPath(`${path}${name}/${name}.style.js`)
     );
+    if (this.props.redux)
+      this.composeWith(require.resolve("../redux"), {
+        path:  path,
+        rxjs:   this.options.rxjs,
+        chapter: chapter,
+        page:_name
+      });
   }
 };
