@@ -14,7 +14,7 @@ const <%= name %>ExecutionPlan = (action) =>
 
 const <%= name %>Promise = (payload) => {
   const api = api_auth_v1_factory(payload.accessToken);
-  api.query({
+  return api.query({
     query: <%= NA_ME %>_QUERY,
     variables:{
       name:payload.name,

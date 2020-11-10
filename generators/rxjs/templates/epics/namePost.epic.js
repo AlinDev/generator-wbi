@@ -14,7 +14,7 @@ const <%= name %>ExecutionPlan = (action) =>
 
 const <%= name %>Promise = (payload) =>{
   const api = api_auth_v1_factory(payload.accessToken);
-  api.mutate({
+  return api.mutate({
     mutation: <%= NA_ME %>_MUTATION,
     variables: {
     input:payload.sample,

@@ -12,14 +12,13 @@ export const  <%= name %>Reducer = (state = <%=  Name %>, action) => {
   const { type, payload } = action;
   let newState = { ...state };
 
-  let path;
   switch ( type) {
     case <%= NA_ME %>_UPDATE:
       newState[payload.inputId] = payload.text;
       newState.submitted = false;
     break;
     case <%= NA_ME %>_RESET:
-      newState = Name;
+      newState = <%=  Name %>;
     break;
     case <%= NA_ME %>_API:
       newState.submitted = true;
