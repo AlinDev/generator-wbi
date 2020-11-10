@@ -16,7 +16,7 @@ module.exports = class extends Generator {
         type: "input",
         name: "name",
         message: "What is your the name of your page?",
-        default: `${this.options.chapter}`,
+        default:  this.options.chapter ,
       },
       {
         type: "confirm",
@@ -35,12 +35,13 @@ module.exports = class extends Generator {
   writing() {
     const path = this.options.path ? `${this.options.path}/` : "";
     const chapter = this.options.chapter ? `${this.options.chapter}/` : "";
-    const _name = this.props.name;
-    const NAME = this.props.name.toUpperCase();
+    let _name =  this.nameToCamelCase( )
+
+    const NAME = _name.toUpperCase();
     const name =
-      this.props.name.charAt(0).toLowerCase() + this.props.name.slice(1);
+            _name.charAt(0).toLowerCase() + _name.slice(1);
     const Name =
-      this.props.name.charAt(0).toUpperCase() + this.props.name.slice(1);
+            _name.charAt(0).toUpperCase() + _name.slice(1);
 
     this.fs.copyTpl(
       this.templatePath("page/Name.jsx"),
@@ -57,5 +58,23 @@ module.exports = class extends Generator {
         chapter: chapter,
         page:_name
       });
+  }
+
+
+// convert the input array to camel case
+  nameToCamelCase( ) {
+
+    let inputArray =  this.props.name.split(" ")
+    let result = ""
+    for (let i = 0, len = inputArray.length; i < len; i++) {
+      let currentStr = inputArray[i]
+      let tempStr = currentStr.toLowerCase()
+      if (i != 0) {
+        // convert first letter to upper case (the word is in lowercase)
+        tempStr = tempStr.substr(0, 1).toUpperCase() + tempStr.substr(1)
+      }
+      result += tempStr
+    }
+    return result
   }
 };

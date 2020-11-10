@@ -27,7 +27,8 @@ module.exports = class extends Generator {
   writing() {
     const path = this.options.path ? `${this.options.path}/` : "";
     const chapter = this.options.chapter ;
-    const _name = this.props.name;
+    let _name = this.props.name;
+    _name= this.toCamelCase(_name.split(" "))
     const name = this.props.name.toLowerCase();
     const NAME = this.props.name.toUpperCase();
     const Name =
@@ -57,5 +58,21 @@ module.exports = class extends Generator {
       ),
       { name, NAME, Name, _name }
     );
+  }
+
+
+// convert the input array to camel case
+  toCamelCase(inputArray) {
+    let result = ""
+    for (let i = 0, len = inputArray.length; i < len; i++) {
+      let currentStr = inputArray[i]
+      let tempStr = currentStr.toLowerCase()
+      if (i != 0) {
+        // convert first letter to upper case (the word is in lowercase)
+        tempStr = tempStr.substr(0, 1).toUpperCase() + tempStr.substr(1)
+      }
+      result += tempStr
+    }
+    return result
   }
 };
