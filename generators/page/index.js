@@ -19,7 +19,6 @@ module.exports = class extends Generator {
         default: "page",
       },
     ];
-
     return this.prompt(prompts).then(
       function (props) {
         this.props = props;
@@ -29,6 +28,7 @@ module.exports = class extends Generator {
 
   writing() {
     const path = this.options.path ? `${this.options.path}/` : "";
+    const chapter = this.options.chapter ;
     const _name = this.props.name;
     const NAME = this.props.name.toUpperCase();
     const name =
@@ -38,12 +38,12 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
       this.templatePath("page/Name.jsx"),
-      this.destinationPath(`${path}${name}/${Name}.jsx`),
+      this.destinationPath(`${path}${chapter}${name}/${Name}.jsx`),
       { name, Name, _name, NAME }
     );
     this.fs.copyTpl(
       this.templatePath("page/name.style.js"),
-      this.destinationPath(`${path}${name}/${name}.style.js`)
+      this.destinationPath(`${path}${chapter}${name}/${name}.style.js`)
     );
   }
 };

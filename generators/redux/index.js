@@ -31,6 +31,7 @@ module.exports = class extends Generator {
 
   writing() {
     const path = this.options.path ? `${this.options.path}/` : "";
+    const chapter = this.options.chapter ? `${this.options.chapter}/` : "";
     const _name = this.props.name;
     const name = this.props.name.toLowerCase();
     const NAME = this.props.name.toUpperCase();
@@ -38,30 +39,30 @@ module.exports = class extends Generator {
       this.props.name.charAt(0).toUpperCase() + this.props.name.slice(1);
 
     if (this.props.rxjs)
-      this.composeWith(require.resolve("../rxjs"), { path: this.options.path });
+      this.composeWith(require.resolve("../rxjs"), { path: this.options.path,chapter: chapter });
 
     this.fs.copyTpl(
       this.templatePath("actions/reduxName.actions.js"),
-      this.destinationPath(`${path}_redux/actions/${_name}.actions.js`),
+      this.destinationPath(`${path}${chapter}_redux/actions/${_name}.actions.js`),
       { name, NAME, Name, _name }
     );
     this.fs.copyTpl(
       this.templatePath("actions/reducers/models/reduxName.model.js"),
       this.destinationPath(
-        `${path}_redux/actions/reducers/models/${_name}.model.js`
+        `${path}${chapter}_redux/actions/reducers/models/${_name}.model.js`
       ),
       { name, NAME, Name, _name }
     );
     this.fs.copyTpl(
       this.templatePath("actions/reducers/reduxName.reducer.js"),
       this.destinationPath(
-        `${path}_redux/actions/reducers/${_name}.reducer.js`
+        `${path}${chapter}_redux/actions/reducers/${_name}.reducer.js`
       ),
       { name, NAME, Name, _name }
     );
     this.fs.copyTpl(
       this.templatePath("errors/errorName.error.js"),
-      this.destinationPath(`${path}_redux/errors/${_name}.errors.js`),
+      this.destinationPath(`${path}${chapter}_redux/errors/${_name}.errors.js`),
       { name, NAME, Name, _name }
     );
   }

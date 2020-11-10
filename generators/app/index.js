@@ -50,16 +50,18 @@ module.exports = class extends Generator {
 
     this.composeWith(require.resolve("../page"), {
       path: path + "/pages",
+      chapter: _name
     });
     if (this.props.redux)
       this.composeWith(require.resolve("../redux"), {
         path:  path,
-        rxjs:  rxjs
+        rxjs:   this.options.rxjs,
+        chapter: _name
       });
     mkdirp.sync(`${this.options.path}/`);
     this.fs.copyTpl(
       this.templatePath(),
-      this.destinationPath(`${path}`),
+      this.destinationPath(`${path}${_name}`),
       { name, Name, NAME, _name }
     );
   }
