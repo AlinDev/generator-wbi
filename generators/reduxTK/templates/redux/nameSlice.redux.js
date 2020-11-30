@@ -1,22 +1,22 @@
+import { createSlice } from "@reduxjs/toolkit";
 import { <%= Name %> } from "./<%=  name %>.model";
 
-const  <%= name %>Slice = createSlice( {
+export const  <%= name %>Slice = createSlice( {
   name: "<%= name %>",
   initialState: <%=  Name %>,
   reducers: {
-    update: (state,action)=>{
-      state[action.payload.key] = action.payload.value;
+      reset:(state,action)=> <%=  Name %>,
+    update: (state,{payload})=>{
+      state[payload.key] = payload.value;
       state.submitted = false;
     },
-    reset:(state,action)=>{
-        state = <%=  Name %>;
-    },
-  fetch:(state,action)=>{
+    fetch:(state, )=>{
         state.submitted = true;
         state.isSuccessful = false;
     },
-    success:(state,action)=>{
+    success:(state,{payload})=>{
         state.isSuccessful = true;
+    //state.result= payload.result
     },
     fail:(state,action)=>{
         state.isSuccessful = false;
@@ -24,8 +24,4 @@ const  <%= name %>Slice = createSlice( {
     }
   }
 });
-
-const {reset, update, fetch, success, fail} =<%= name %>Slice.actions;
-const  <%= name %>Reducer = <%= name %>Slice.reducer;
-export   {<%= name %>Slice,<%= name %>Reducer,reset, update, api, success, fail}
 
