@@ -13,19 +13,23 @@ const <%= name %>ExecutionPlan = (action) =>
     .pipe(catchError((error) => from(failActions(error))));
 
 const <%= name %>Promise = (payload) =>{
+  console.log("{ <%= name %>Get.epic.js}[ <%= name %>Promise](21) payload", payload)
   const api = api_auth_v1_factory(payload.accessToken);
   return api.mutate({
     mutation: <%= NA_ME %>_MUTATION,
     variables: {
-    input:payload.sample,
+    input:payload.input,
     },
   });
-  }
+}
 
 const successActions = (response) => {
+console.log("{ <%= name %>Get.epic.js}[ <%= name %>successActions](21) payload", payload)
   return [<%= name %>Slice.actions.success(response),hideLoading({id:"<%= name %>"})];
 };
+
 const failActions = (error) => {
+console.log("{ <%= name %>Get.epic.js}[ <%= name %>failActions](21) payload", payload)
   return [<%= name %>Slice.actions.fail(error),hideLoading({id:"<%= name %>"})];
 };
 

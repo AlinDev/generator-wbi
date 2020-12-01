@@ -5,7 +5,7 @@ export const  <%= name %>Slice = createSlice( {
   name: "<%= name %>",
   initialState: <%=  Name %>,
   reducers: {
-      reset:(state,action)=> <%=  Name %>,
+    reset:( )=> <%=  Name %>,
     update: (state,{payload})=>{
       state[payload.key] = payload.value;
       state.submitted = false;
@@ -16,6 +16,10 @@ export const  <%= name %>Slice = createSlice( {
     },
     success:(state,{payload})=>{
         state.isSuccessful = true;
+    console.log(
+    "{<%= name %>.redux.js}[success](19) payload",
+        payload
+      );
     //state.result= payload.result
     },
     fail:(state,action)=>{

@@ -17,10 +17,17 @@ const <%= name %>Promise = (payload) => {
   return api.query({
     query: <%= NA_ME %>_QUERY,
     variables:{
-      name:payload.name,
+      input:payload.input,
     }
   });
 };
 
-const successActions = (response) => [ <%= name %>Slice.actions.success(response),hideLoading({id:"<%= name %>"})];
-const failActions = (error) => [ <%= name %>Slice.actions.fail(error),hideLoading({id:"<%= name %>"})];
+const successActions = (response) => {
+  console.log("{ <%= name %>Get.epic.js}[ <%= name %>successActions](21) payload", payload)
+  return [<%= name %>Slice.actions.success(response),hideLoading({id:"<%= name %>"})];
+};
+
+const failActions = (error) => {
+  console.log("{ <%= name %>Get.epic.js}[ <%= name %>failActions](21) payload", payload)
+  return [<%= name %>Slice.actions.fail(error),hideLoading({id:"<%= name %>"})];
+};
