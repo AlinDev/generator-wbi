@@ -22,5 +22,5 @@ const <%= name %>Promise = (payload) => {
   });
 };
 
-const successActions = (response) => [ success(response),hideLoading({id:"<%= name %>"})];
-const failActions = (error) => [ fail(error),hideLoading({id:"<%= name %>"})];
+const successActions = (response) => [ <%= name %>Slice.actions.success(response),hideLoading({id:"<%= name %>"})];
+const failActions = (error) => [ <%= name %>Slice.actions.fail(error),hideLoading({id:"<%= name %>"})];
