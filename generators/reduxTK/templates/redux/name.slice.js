@@ -17,7 +17,7 @@ export const  <%= name %>Slice = createSlice( {
     success:(state,{payload})=>{
         state.isSuccessful = true;
     console.log(
-    "{<%= name %>.redux.js}[success](19) payload",
+    "{<%= name %>.slice.js}[success](19) payload",
         payload
       );
     //state.result= payload.result

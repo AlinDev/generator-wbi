@@ -1,8 +1,8 @@
 import { ofType } from "redux-observable";
-import { <%= name %>Slice } from "../<%= name %>.redux";
+import { <%= name %>Slice  } from "./<%= name %>.slice";
 import { catchError, mergeMap } from "rxjs/operators";
 import { from }       from "rxjs";
-import { <%= NA_ME %>_QUERY } from "./queries/<%= na_me %>_query.gql";
+import { <%= NA_ME %>_QUERY } from "./<%= na_me %>_query.gql";
 
 export const <%= name %>GetEpic = (actions$) =>
   actions$.pipe(ofType(<%= name %>Slice.actions.fetch.toString()) ).pipe(mergeMap(<%= name %>ExecutionPlan));
@@ -18,16 +18,17 @@ const <%= name %>Promise = (payload) => {
     query: <%= NA_ME %>_QUERY,
     variables:{
       input:payload.input,
+      ...payload.args,
     }
   });
 };
 
 const successActions = (response) => {
-  console.log("{ <%= name %>Get.epic.js}[ <%= name %>successActions](21) payload", payload)
-  return [<%= name %>Slice.actions.success(response),hideLoading({id:"<%= name %>"})];
+  console.log("{ <%= name %>Get.epic.js}[ <%= name %>successActions](21) response", response)
+  return [<%= name %> .actions.success(response),hideLoading({id:"<%= name %>"})];
 };
 
 const failActions = (error) => {
-  console.log("{ <%= name %>Get.epic.js}[ <%= name %>failActions](21) payload", payload)
-  return [<%= name %>Slice.actions.fail(error),hideLoading({id:"<%= name %>"})];
+  console.log("{ <%= name %>Get.epic.js}[ <%= name %>failActions](21) error", error)
+  return [<%= name %> .actions.fail(error),hideLoading({id:"<%= name %>"})];
 };
