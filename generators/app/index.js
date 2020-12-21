@@ -20,7 +20,7 @@ module.exports = class extends Generator {
         name: "chapter",
         message: "What is your the name of your chapter?",
         default: "chapter",
-      }
+      },
     ];
     return this.prompt(prompts).then(
       function (props) {
@@ -30,15 +30,15 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    const path = this.options.path  ? `${this.options.path}/` : "";
+    const path = this.options.path ? `${this.options.path}/` : "";
     let _name = this.props.chapter;
-    _name= this.toCamelCase(_name.split(" "))
+    _name = this.toCamelCase(_name.split(" "));
     const NAME = _name.toUpperCase();
     const name = _name.toLowerCase();
     const Name = name.charAt(0).toUpperCase() + name.slice(1);
     this.composeWith(require.resolve("../page"), {
       path: `${path}${_name}` + "/pages",
-      chapter: _name
+      chapter: _name,
     });
 
     mkdirp.sync(`${path}`);
@@ -49,22 +49,19 @@ module.exports = class extends Generator {
     );
   }
 
-
-
-// convert the input array to camel case
+  // convert the input array to camel case
   toCamelCase(inputArray) {
-
-    console.log("{index.js}[writing](38) inputArray ", inputArray)
-    let result = ""
+    console.log("{index.js}[writing](38) inputArray ", inputArray);
+    let result = "";
     for (let i = 0, len = inputArray.length; i < len; i++) {
-      let currentStr = inputArray[i]
-      let tempStr = currentStr.toLowerCase()
+      let currentStr = inputArray[i];
+      let tempStr = currentStr.toLowerCase();
       if (i != 0) {
         // convert first letter to upper case (the word is in lowercase)
-        tempStr = tempStr.substr(0, 1).toUpperCase() + tempStr.substr(1)
+        tempStr = tempStr.substr(0, 1).toUpperCase() + tempStr.substr(1);
       }
-      result += tempStr
+      result += tempStr;
     }
-    return result
+    return result;
   }
 };

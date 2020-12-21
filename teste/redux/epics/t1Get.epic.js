@@ -1,11 +1,11 @@
 import { ofType } from "redux-observable";
-import { failure,success,api } from "../t1Slice.reducer";
+import { failure, success, api } from "../t1Slice.reducer";
 import { catchError, mergeMap } from "rxjs/operators";
-import { from }       from "rxjs";
+import { from } from "rxjs";
 import { T1_QUERY } from "./queries/t1_query.gql";
 
 export const t1GetEpic = (actions$) =>
-  actions$.pipe(ofType(get.toString()) ).pipe(mergeMap(t1ExecutionPlan));
+  actions$.pipe(ofType(get.toString())).pipe(mergeMap(t1ExecutionPlan));
 
 const t1ExecutionPlan = (action) =>
   from(t1Promise(action.payload))
@@ -16,11 +16,14 @@ const t1Promise = (payload) => {
   const api = api_auth_v1_factory(payload.accessToken);
   return api.query({
     query: T1_QUERY,
-    variables:{
-      name:payload.name,
-    }
+    variables: {
+      name: payload.name,
+    },
   });
 };
 
-const successActions = (response) => [ success(response),hideLoading({id:"t1"})];
-const failActions = (error) => [ failure(error),hideLoading({id:"t1"})];
+const successActions = (response) => [
+  success(response),
+  hideLoading({ id: "t1" }),
+];
+const failActions = (error) => [failure(error), hideLoading({ id: "t1" })];

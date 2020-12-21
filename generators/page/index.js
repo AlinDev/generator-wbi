@@ -16,7 +16,7 @@ module.exports = class extends Generator {
         type: "input",
         name: "name",
         message: "What is your the name of your page?",
-        default:  this.options.chapter ,
+        default: this.options.chapter,
       },
       {
         type: "confirm",
@@ -35,13 +35,11 @@ module.exports = class extends Generator {
   writing() {
     const path = this.options.path ? `${this.options.path}/` : "";
     const chapter = this.options.chapter ? `${this.options.chapter}/` : "";
-    let _name =  this.nameToCamelCase( )
+    let _name = this.nameToCamelCase();
 
     const NAME = _name.toUpperCase();
-    const name =
-            _name.charAt(0).toLowerCase() + _name.slice(1);
-    const Name =
-            _name.charAt(0).toUpperCase() + _name.slice(1);
+    const name = _name.charAt(0).toLowerCase() + _name.slice(1);
+    const Name = _name.charAt(0).toUpperCase() + _name.slice(1);
 
     this.fs.copyTpl(
       this.templatePath("page/Name.jsx"),
@@ -54,27 +52,25 @@ module.exports = class extends Generator {
     );
     if (this.props.redux)
       this.composeWith(require.resolve("../redux"), {
-        path:  path,
+        path: path,
         chapter: chapter,
-        page:this.props.name
+        page: this.props.name,
       });
   }
 
-
-// convert the input array to camel case
-  nameToCamelCase( ) {
-
-    let inputArray =  this.props.name.split(" ")
-    let result = ""
+  // convert the input array to camel case
+  nameToCamelCase() {
+    let inputArray = this.props.name.split(" ");
+    let result = "";
     for (let i = 0, len = inputArray.length; i < len; i++) {
-      let currentStr = inputArray[i]
-      let tempStr = currentStr.toLowerCase()
+      let currentStr = inputArray[i];
+      let tempStr = currentStr.toLowerCase();
       if (i != 0) {
         // convert first letter to upper case (the word is in lowercase)
-        tempStr = tempStr.substr(0, 1).toUpperCase() + tempStr.substr(1)
+        tempStr = tempStr.substr(0, 1).toUpperCase() + tempStr.substr(1);
       }
-      result += tempStr
+      result += tempStr;
     }
-    return result
+    return result;
   }
 };

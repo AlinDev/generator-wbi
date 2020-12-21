@@ -1,10 +1,8 @@
-
-
 export const manageT1Errors = (error) => {
   const errorString = JSON.stringify(error);
   let messageID;
-  let pageId = " ";//fill it in
-  let fieldId = " ";//fill it in
+  let pageId = " "; //fill it in
+  let fieldId = " "; //fill it in
   switch (true) {
     case errorString.includes("invalid_grant"):
       messageID = l.invalid_user.id;
