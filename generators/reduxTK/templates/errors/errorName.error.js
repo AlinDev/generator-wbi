@@ -5,10 +5,10 @@ export const manage<%= Name %>Errors = (error) => {
   let fieldId = " ";//fill it in
   switch (true) {
     case errorString.includes("invalid_grant"):
-      messageID = languages.invalid_user.id;
+      messageID = vocabulary.invalid_user.id;
       break;
     default:
-      messageID = languages.NEW_ERROR.id;
+      messageID = vocabulary.NEW_ERROR.id;
       break;
   }
   return errorMessage(interpreter.t(messageID), pageId, fieldId);

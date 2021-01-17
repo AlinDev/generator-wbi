@@ -25,10 +25,10 @@ const <%= name %>Promise = (payload) => {
 
 const successActions = (response) => {
   console.log("{ <%= name %>Get.epic.js}[ <%= name %>successActions](21) response", response)
-  return [<%= name %> .actions.success(response),hideLoading({id:"<%= name %>"})];
+  return [<%= name %>Slice.actions.success(response),loadingSlice.actions.hide({id:"<%= name %>"})];
 };
 
 const failActions = (error) => {
   console.log("{ <%= name %>Get.epic.js}[ <%= name %>failActions](21) error", error)
-  return [<%= name %> .actions.fail(error),hideLoading({id:"<%= name %>"})];
+  return [<%= name %>Slice.actions.fail(error),loadingSlice.actions.hide({id:"<%= name %>"})];
 };
