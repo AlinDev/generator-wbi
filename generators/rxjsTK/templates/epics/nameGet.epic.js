@@ -17,7 +17,6 @@ const <%= name %>Promise = (payload) => {
   return api.query({
     query: <%= NA_ME %>_QUERY,
     variables:{
-      input:payload.input,
       ...payload.args,
     }
   });

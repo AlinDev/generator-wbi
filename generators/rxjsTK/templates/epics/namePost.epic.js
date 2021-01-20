@@ -18,7 +18,8 @@ const <%= name %>Promise = (payload) =>{
   return api.mutate({
     mutation: <%= NA_ME %>_MUTATION,
     variables: {
-    input:payload.input,
+      input: "body",//payload.input
+      ...payload.args,
     },
   });
 }
