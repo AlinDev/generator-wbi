@@ -13,9 +13,11 @@ export const  <%= name %>Slice = createSlice( {
     fetch:(state, )=>{
         state.submitted = true;
         state.isSuccessful = false;
+        state.fetching = true;
     },
     success:(state,{payload})=>{
         state.isSuccessful = true;
+        state.fetching = false;
     console.log(
     "{<%= name %>.slice.js}[success](19) payload",
         payload
@@ -24,6 +26,7 @@ export const  <%= name %>Slice = createSlice( {
     },
     fail:(state,action)=>{
         state.isSuccessful = false;
+        state.fetching = false;
         state.error  =  action.payload.message;
     }
   }

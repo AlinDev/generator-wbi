@@ -49,17 +49,17 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
       this.templatePath("redux/reduxName.model.js"),
-      this.destinationPath(`${path}redux/${name}.redux/${naMe}.model.js`),
+      this.destinationPath(`${path}_redux/${name}.redux/${naMe}.model.js`),
       { na_me, NA_ME, Name, name }
     );
     this.fs.copyTpl(
       this.templatePath("redux/name.slice.js"),
-      this.destinationPath(`${path}redux/${name}.redux/${naMe}.slice.js`),
+      this.destinationPath(`${path}_redux/${name}.redux/${naMe}.slice.js`),
       { na_me, NA_ME, Name, name }
     );
     this.fs.copyTpl(
       this.templatePath("errors/errorName.error.js"),
-      this.destinationPath(`${path}redux/${name}.redux/${naMe}.errors.js`),
+      this.destinationPath(`${path}_redux/${name}.redux/${naMe}.errors.js`),
       { na_me, NA_ME, Name, name }
     );
   }

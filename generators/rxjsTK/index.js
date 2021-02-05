@@ -37,29 +37,29 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
       this.templatePath("epics/nameGet.epic.js"),
-      this.destinationPath(`${path}redux/${name}.redux/${name}Get.epic.js`),
+      this.destinationPath(`${path}_redux/${name}.redux/${name}Get.epic.js`),
       { na_me, NA_ME, Name, name }
     );
     this.fs.copyTpl(
       this.templatePath("epics/namePost.epic.js"),
-      this.destinationPath(`${path}redux/${name}.redux/${name}Post.epic.js`),
+      this.destinationPath(`${path}_redux/${name}.redux/${name}Post.epic.js`),
       { na_me, NA_ME, Name, name }
     );
     this.fs.copyTpl(
       this.templatePath("epics/queries/name_mutation.gql.js"),
       this.destinationPath(
-        `${path}redux/${name}.redux/${na_me}_mutation.gql.js`
+        `${path}_redux/${name}.redux/${na_me}_mutation.gql.js`
       ),
       { na_me, NA_ME, Name, name }
     );
     this.fs.copyTpl(
       this.templatePath("epics/queries/name_query.gql.js"),
-      this.destinationPath(`${path}redux/${name}.redux/${na_me}_query.gql.js`),
+      this.destinationPath(`${path}_redux/${name}.redux/${na_me}_query.gql.js`),
       { na_me, NA_ME, Name, name }
     );
     this.fs.copyTpl(
       this.templatePath("useName.js"),
-      this.destinationPath(`${path}redux/use${Name}.js`),
+      this.destinationPath(`${path}_redux/use${Name}.js`),
       { na_me, NA_ME, Name, name }
     );
   }

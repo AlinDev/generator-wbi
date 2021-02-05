@@ -51,7 +51,7 @@ module.exports = class extends Generator {
       this.destinationPath(`${path}${name}/${name}.style.js`)
     );
     if (this.props.redux)
-      this.composeWith(require.resolve("../redux"), {
+      this.composeWith(require.resolve("../reduxTK"), {
         path: path,
         chapter: chapter,
         page: this.props.name,
