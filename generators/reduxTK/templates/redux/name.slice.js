@@ -11,7 +11,6 @@ export const  <%= name %>Slice = createSlice( {
       state.submitted = false;
     },
     fetch:(state, )=>{
-        state.submitted = true;
         state.isSuccessful = false;
         state.fetching = true;
     },
