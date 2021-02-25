@@ -1,7 +1,10 @@
 export const <%= Name %> =  {
-  submitted:  false ,
-  isSuccessful:  false ,
-  fetching: false,
-  redirect: "" ,
-  error:  "" ,
-} ;
+  input:{},
+  result:{},
+  status:{
+    submitted:  false ,
+    isSuccessful:  false ,
+    fetching: false,
+    error:  ""
+  }
+};
